@@ -1135,66 +1135,357 @@ footer p {
         font-size: 35px;
     }
 }
-/* 분반 안내 손글씨 강조 디자인 */
+
+/* 공개수업 신청 손글씨 강조 */
 
 .apply-title-row {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 8px 15px;
+    position: relative;
+    display: block;
+    margin-top: 20px;
 }
 
 .apply-title-row h2 {
     margin: 0;
-    flex-shrink: 0;
+    white-space: nowrap;
 }
 
 .handwritten-note {
-    display: inline-flex;
+    position: absolute;
+    right: 0;
+    bottom: calc(100% + 8px);
+
+    display: flex;
     flex-direction: column;
     align-items: center;
 
     font-family: 'Nanum Pen Script', cursive;
     color: #d32f2f;
     font-weight: 400;
-
-    transform: rotate(-5deg);
-    line-height: 1.1;
+    transform: rotate(-6deg);
+    line-height: 1.2;
 }
 
 .handwritten-stars {
     font-size: 23px;
-    letter-spacing: 3px;
-    margin-bottom: 2px;
+    letter-spacing: 5px;
+    margin-bottom: 3px;
 }
 
 .handwritten-text {
-    font-size: 24px;
+    font-size: 22px;
     white-space: nowrap;
-
     text-decoration: underline;
     text-decoration-style: wavy;
     text-decoration-thickness: 1.5px;
     text-underline-offset: 5px;
 }
 
-/* 스마트폰 화면 대응 */
+/* 스마트폰 및 좁은 화면 대응 */
 
 @media (max-width: 768px) {
-
     .handwritten-text {
-        font-size: 22px;
+        font-size: 20px;
     }
 
     .handwritten-stars {
         font-size: 20px;
     }
+}
 
+@media (max-width: 380px) {
     .apply-title-row {
-        gap: 8px 12px;
+        padding-top: 52px;
+        margin-top: 0;
     }
 
+    .handwritten-note {
+        top: 0;
+        bottom: auto;
+    }
 }
+
+/* ==========================================
+   연구학교 보고회 일정표 시작
+========================================== */
+
+.conference-schedule {
+    width: 100%;
+    margin: 24px 0;
+    box-sizing: border-box;
+}
+
+.conference-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    table-layout: fixed;
+    background: #ffffff;
+    border: 1px solid #d5deea;
+    border-radius: 12px;
+    overflow: hidden;
+    font-size: 18px;
+    line-height: 1.65;
+}
+
+/* 표 머리글 */
+
+.conference-table th {
+    box-sizing: border-box;
+    background: #234763;
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: 700;
+    padding: 18px 12px;
+    text-align: center;
+}
+
+/* 열 너비 */
+
+.conference-table th:nth-child(1) {
+    width: 31%;
+}
+
+.conference-table th:nth-child(2) {
+    width: 50%;
+}
+
+.conference-table th:nth-child(3) {
+    width: 19%;
+}
+
+/* 표 본문 */
+
+.conference-table td {
+    padding: 22px 12px;
+    border-bottom: 1px solid #e1e7ef;
+    color: #17243c;
+    vertical-align: middle;
+    text-align: center;
+    font-weight: 400;
+    word-break: keep-all;
+}
+
+/* 시간 */
+
+.conference-table td:first-child {
+    font-size: 18px;
+    font-weight: 400;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+}
+
+/* 소요 시간 */
+
+.conference-table .schedule-minutes {
+    display: inline-block;
+    margin-left: 3px;
+    font-size: 16px;
+    font-weight: 400;
+    color: #64748b;
+}
+
+/* 활동 내용 */
+
+.conference-table td:nth-child(2) {
+    font-size: 20px;
+    font-weight: 400;
+    word-break: keep-all;
+    overflow-wrap: anywhere;
+}
+
+.conference-table td:nth-child(2) strong {
+    font-weight: 700;
+}
+
+/* 장소 */
+
+.conference-table td:last-child {
+    font-size: 18px;
+    font-weight: 400;
+}
+
+/* 마지막 행 */
+
+.conference-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* 일반 일정 배경 */
+
+.conference-table tbody tr:nth-child(odd) td {
+    background: #ffffff;
+}
+
+.conference-table tbody tr:nth-child(even) td {
+    background: #f8fafc;
+}
+
+/* 공개수업 - 초록색 */
+
+.conference-table tr.schedule-lesson td {
+    background: #e9f5ee;
+}
+
+.conference-table tr.schedule-lesson td:nth-child(2) {
+    color: #16734c;
+}
+
+/* 나눔 활동 - 파란색 */
+
+.conference-table tr.schedule-sharing td {
+    background: #edf2fc;
+}
+
+.conference-table tr.schedule-sharing td:nth-child(2) {
+    color: #2854c5;
+}
+
+/* 체험 활동 - 노란색 */
+
+.conference-table tr.schedule-experience td {
+    background: #fff7df;
+}
+
+.conference-table tr.schedule-experience td:nth-child(2) {
+    color: #8b6500;
+}
+
+/* 하단 색상 범례 */
+
+.conference-schedule .schedule-legend {
+    display: flex;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: 24px;
+    margin-top: 20px;
+    font-size: 16px;
+}
+
+.conference-schedule .schedule-legend span {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.conference-schedule .schedule-legend i {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    border-radius: 3px;
+}
+
+.conference-schedule .legend-green {
+    background: #c7e7d4;
+}
+
+.conference-schedule .legend-blue {
+    background: #cbd9f6;
+}
+
+.conference-schedule .legend-yellow {
+    background: #f5dfa0;
+}
+
+.conference-schedule .schedule-legend span:nth-child(1) {
+    color: #16734c;
+}
+
+.conference-schedule .schedule-legend span:nth-child(2) {
+    color: #2854c5;
+}
+
+.conference-schedule .schedule-legend span:nth-child(3) {
+    color: #8b6500;
+}
+
+/* 태블릿 화면 */
+
+@media (max-width: 1024px) {
+
+    .conference-table td:first-child {
+        font-size: 17px;
+        white-space: normal;
+    }
+
+    .conference-table td:nth-child(2) {
+        font-size: 18px;
+    }
+
+    .conference-table td:last-child {
+        font-size: 17px;
+    }
+
+    .conference-table .schedule-minutes {
+        font-size: 15px;
+    }
+}
+
+/* 스마트폰 화면 */
+
+@media (max-width: 768px) {
+
+    .conference-schedule {
+        margin: 18px 0;
+    }
+
+    .conference-table th {
+        font-size: 17px;
+        padding: 14px 5px;
+    }
+
+    .conference-table td {
+        padding: 18px 6px;
+    }
+
+    .conference-table th:nth-child(1) {
+        width: 28%;
+    }
+
+    .conference-table th:nth-child(2) {
+        width: 50%;
+    }
+
+    .conference-table th:nth-child(3) {
+        width: 22%;
+    }
+
+    .conference-table td:first-child {
+        font-size: 14px;
+        white-space: normal;
+        overflow-wrap: anywhere;
+    }
+
+    .conference-table td:nth-child(2) {
+        font-size: 16px;
+    }
+
+    .conference-table td:last-child {
+        font-size: 14px;
+    }
+
+    .conference-table .schedule-minutes {
+        display: block;
+        margin-left: 0;
+        margin-top: 3px;
+        font-size: 13px;
+    }
+
+    .conference-schedule .schedule-legend {
+        justify-content: center;
+        font-size: 13px;
+        gap: 14px;
+    }
+
+    .conference-schedule .schedule-legend i {
+        width: 12px;
+        height: 12px;
+    }
+}
+
+/* ==========================================
+   연구학교 보고회 일정표 끝
+========================================== */
+
 </style>
 </head>
 
@@ -1249,7 +1540,7 @@ footer p {
             </p>
 
             <p class="hero-description">
-                움직임으로 배우고, 건강한 미래를 열다.
+                작은 움직임을 쌓아 큰 성장으로
             </p>
 
         </div>
@@ -1282,7 +1573,7 @@ footer p {
                 <div class="event-row">
                     <i data-lucide="users"></i>
                     <strong>대상</strong>
-                    <span>참관 교원 및 교육 관계자</span>
+                    <span>관내/외 초등교원, 교육청 관계자</span>
                 </div>
 
             </div>
@@ -1319,10 +1610,10 @@ footer p {
 
             <div class="apply-title-row">
 
-    <h2>공개수업 신</h2>
+    <h2>공개수업 신청</h2>
 
     <div class="handwritten-note">
-        <span class="handwritten-stars">☆ ☆ ☆</span>
+        <span class="handwritten-stars">☆☆☆</span>
         <span class="handwritten-text">
             12월 2일(수)까지 신청 필수!
         </span>
@@ -1418,21 +1709,127 @@ footer p {
 
         <h2 class="section-title">보고회 일정</h2>
 
-        <div class="table-wrap">
+       
+<div class="conference-schedule">
 
-            <table>
-                <thead>
-                    <tr>
-                        <th scope="col">시간</th>
-                        <th scope="col">내용</th>
-                        <th scope="col">장소</th>
-                    </tr>
-                </thead>
+    <table class="conference-table">
+        <thead>
+            <tr>
+                <th>시간</th>
+                <th>내용</th>
+                <th>장소</th>
+            </tr>
+        </thead>
 
-                <tbody id="schedule-list"></tbody>
-            </table>
+        <tbody>
+            <tr>
+                <td>
+                    12:40~13:00
+                    <span class="schedule-minutes">(20분)</span>
+                </td>
+                <td><strong>참관자 등록</strong></td>
+                <td>체육관 로비</td>
+            </tr>
 
-        </div>
+            <tr>
+                <td>
+                    13:00~13:15
+                    <span class="schedule-minutes">(15분)</span>
+                </td>
+                <td><strong>연구학교 개요 및 LEGO 프로그램 소개</strong></td>
+                <td>체육관</td>
+            </tr>
+
+            <tr>
+                <td>
+                    13:15~13:20
+                    <span class="schedule-minutes">(5분)</span>
+                </td>
+                <td>공개수업 장소 이동</td>
+                <td>해당 장소</td>
+            </tr>
+
+            <tr class="schedule-lesson">
+                <td>
+                    13:20~14:00
+                    <span class="schedule-minutes">(40분)</span>
+                </td>
+                <td><strong>1, 2학년 공개수업(5개 학급)</strong></td>
+                <td>해당 장소</td>
+            </tr>
+
+            <tr>
+                <td>
+                    14:00~14:10
+                    <span class="schedule-minutes">(10분)</span>
+                </td>
+                <td>수업자 및 참관자 휴식</td>
+                <td>해당 장소</td>
+            </tr>
+
+            <tr class="schedule-sharing">
+                <td>
+                    14:10~14:40
+                    <span class="schedule-minutes">(30분)</span>
+                </td>
+                <td><strong>[나눔] 5그룹 단원 중심 수업 협의회</strong></td>
+                <td>해당 장소</td>
+            </tr>
+
+            <tr>
+                <td>
+                    14:40~14:55
+                    <span class="schedule-minutes">(15분)</span>
+                </td>
+                <td>체육관 이동 및 티타임</td>
+                <td>체육관</td>
+            </tr>
+
+            <tr class="schedule-experience">
+                <td>
+                    14:55~15:25
+                    <span class="schedule-minutes">(30분)</span>
+                </td>
+                <td><strong>[체험] 신설교과 FMS 체험부스&amp;퀴즈</strong></td>
+                <td>체육관</td>
+            </tr>
+
+            <tr>
+                <td>
+                    15:25~15:45
+                    <span class="schedule-minutes">(20분)</span>
+                </td>
+                <td><strong>협의 결과 공유 및 총평</strong></td>
+                <td>체육관</td>
+            </tr>
+
+            <tr>
+                <td>
+                    15:45~15:50
+                    <span class="schedule-minutes">(5분)</span>
+                </td>
+                <td><strong>마무리 및 정리</strong></td>
+                <td>체육관</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="schedule-legend">
+        <span>
+            <i class="legend-green"></i> 공개수업
+        </span>
+
+        <span>
+            <i class="legend-blue"></i> 나눔 활동
+        </span>
+
+        <span>
+            <i class="legend-yellow"></i> 체험 활동
+        </span>
+    </div>
+
+</div>
+
 
         <h2 class="section-title">공개수업 안내</h2>
 
@@ -1796,7 +2193,7 @@ footer p {
 const CONFIG = {
 
     // 보고회 일시
-    eventDate: "추후 안내 예정",
+    eventDate: "2026. 12. 10.(목) 13:00~16:00",
 
     // 학교 주소
     address: "경상남도 거제시 장평초등학교",
@@ -1974,22 +2371,6 @@ CONFIG.notices.forEach(notice => {
     $("notice-list").appendChild(li);
 
 });
-
-
-/* 보고회 시간표 */
-
-CONFIG.schedule.forEach(item => {
-
-    const row = createElement("tr");
-
-    [item.time, item.content, item.place].forEach(value => {
-        row.appendChild(createElement("td", value));
-    });
-
-    $("schedule-list").appendChild(row);
-
-});
-
 
 /* 공개수업 카드 */
 
