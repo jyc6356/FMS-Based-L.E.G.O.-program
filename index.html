@@ -1777,7 +1777,186 @@ nav a {
         background-size: 100% 100%;
     }
 }
+/* 홈 화면 메뉴 카드 정렬 */
+#home .quick-card {
+    position: relative;
+    align-content: center;
+}
 
+#home .apply-title-row {
+    display: block;
+    position: relative;
+    margin: 0;
+    padding: 0;
+}
+
+#home .apply-title-row h2 {
+    margin: 0;
+}
+
+/* 신청 마감 안내를 제목 위에 독립적으로 배치 */
+#home .handwritten-note {
+    position: absolute;
+    bottom: calc(100% + 6px);
+    left: 0;
+    margin: 0;
+    transform: rotate(-3deg);
+    white-space: nowrap;
+}
+
+#home .handwritten-text {
+    font-size: clamp(19px, 1.6vw, 26px);
+    white-space: nowrap;
+}
+
+#home .handwritten-stars {
+    font-size: 21px;
+    margin: 0;
+}
+
+/* 신청 안내 문구가 들어갈 공간 확보 */
+#home .quick-card {
+    min-height: 265px;
+    padding-top: 64px;
+    padding-bottom: 28px;
+}
+
+/* 모바일 화면 */
+@media (max-width: 768px) {
+    #home .quick-card {
+        min-height: auto;
+        padding: 24px;
+    }
+
+    #home .handwritten-note {
+        position: static;
+        margin-bottom: 10px;
+        white-space: normal;
+    }
+
+    #home .apply-title-row {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+
+    #home .handwritten-text {
+        white-space: normal;
+    }
+}
+    /* 오시는 길 - 주차 필수 안내 */
+.parking-alert {
+    background: #fff3ed;
+    border: 2px solid #eab5a6;
+    border-radius: 14px;
+    padding: 28px 32px;
+    margin: 24px 0;
+}
+
+.parking-alert h2 {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 28px;
+    color: #b42318;
+    margin: 0 0 16px;
+}
+
+.parking-alert h2 svg {
+    width: 30px;
+    height: 30px;
+    flex-shrink: 0;
+}
+
+.parking-alert p {
+    font-size: 19px;
+    color: #55352d;
+    line-height: 1.7;
+}
+
+.parking-important {
+    border-top: 1px solid #eab5a6;
+    margin-top: 18px;
+    padding-top: 18px;
+    font-size: clamp(22px, 2vw, 30px);
+    font-weight: 800;
+    line-height: 1.6;
+    color: #b42318;
+    word-break: keep-all;
+}
+
+/* 교내 주차 및 셔틀버스 요약 */
+.parking-summary {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.parking-summary-card {
+    padding: 26px;
+    border-radius: 14px;
+}
+
+.school-parking {
+    background: #edf4ff;
+    color: #145acb;
+}
+
+.shuttle-parking {
+    background: #edf5e9;
+    color: #286d38;
+}
+
+.parking-summary-card svg {
+    width: 36px;
+    height: 36px;
+    margin-bottom: 10px;
+}
+
+.parking-summary-card h3 {
+    font-size: 23px;
+    margin: 0 0 8px;
+}
+
+.parking-summary-card strong {
+    display: block;
+    font-size: clamp(28px, 3vw, 42px);
+    font-weight: 800;
+    margin-bottom: 8px;
+}
+
+.parking-summary-card p {
+    font-size: 18px;
+    margin: 0;
+}
+
+/* 모바일 화면 */
+@media (max-width: 768px) {
+    .parking-alert {
+        padding: 20px;
+    }
+
+    .parking-alert h2 {
+        font-size: 22px;
+    }
+
+    .parking-alert p {
+        font-size: 17px;
+    }
+
+    .parking-important {
+        font-size: 22px;
+    }
+
+    .parking-summary {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .parking-summary-card {
+        padding: 20px;
+    }
+}
 </style>
 </head>
 
@@ -1930,7 +2109,7 @@ nav a {
 
             <h2>오시는 길</h2>
 
-            <p>학교 위치와 주차 안내를 확인하세요.</p>
+            <p>지정 주차장 및 셔틀버스 이용 안내를 확인하세요.</p>
 
             <span class="quick-link">
                 길 찾기
@@ -2365,7 +2544,45 @@ nav a {
         <p class="page-description">
             장평초등학교 위치 및 주차 정보를 안내합니다.
         </p>
+<!-- 방문 전 주차 필수 안내 -->
+<div class="parking-alert">
 
+    <h2>
+        <i data-lucide="alert-triangle"></i>
+        방문 전 반드시 확인해 주세요!
+    </h2>
+
+    <p>
+        보고회 당일 운동장에서 공개수업이
+        이루어지는 관계로 운동장 주차가 불가합니다.
+    </p>
+
+    <div class="parking-important">
+        12시 30분 이후 도착하거나<br>
+        교내 주차장이 만차인 경우<br>
+        반드시 지정 주차장 및 셔틀버스를
+        이용해 주세요.
+    </div>
+
+</div>
+
+<div class="parking-summary">
+
+    <div class="parking-summary-card school-parking">
+        <i data-lucide="car-front"></i>
+        <h3>교내 주차</h3>
+        <strong>12:30까지</strong>
+        <p>40대 한정 · 선착순 주차</p>
+    </div>
+
+    <div class="parking-summary-card shuttle-parking">
+        <i data-lucide="bus"></i>
+        <h3>셔틀버스 운행</h3>
+        <strong>12:40 / 12:50</strong>
+        <p>지정 주차장에서 총 2회 출발</p>
+    </div>
+
+</div>
         <div class="map-layout">
 
             <iframe
@@ -2507,11 +2724,15 @@ const CONFIG = {
 
     // 공지사항
     notices: [
-        {
-            date: "",
-            title: "연구학교 보고회 세부 일정은 추후 안내 예정입니다."
-        }
-    ],
+    {
+        date: "",
+        title: "공개수업 참관 신청은 12월 2일(수)까지 완료해 주시기 바랍니다."
+    },
+    {
+        date: "",
+        title: "보고회 당일 운동장 공개수업으로 인해 교내 주차 공간이 제한됩니다. 지정 주차장 및 셔틀버스를 이용해 주시기 바랍니다. (오시는 길 참고)"
+    }
+],
 
     // 보고회 시간표
     schedule: [
@@ -2593,8 +2814,12 @@ const CONFIG = {
     ],
 
     // 주차 안내 문구
-    parking:
-        "보고회 당일 주차 장소 및 진입 방법은 추후 안내 예정입니다.",
+   parking:
+    "• 교내 주차는 12시 30분까지 가능하며, 40대 한정으로 운영됩니다.\n" +
+    "• 12시 30분 이후 도착하거나 교내 주차장이 만차인 경우 지정 주차장을 이용해 주시기 바랍니다.\n" +
+    "• 셔틀버스 1회차: 12시 40분 출발\n" +
+    "• 셔틀버스 2회차: 12시 50분 출발\n" +
+    "• 지정 주차장 위치 및 탑승 장소는 추후 안내 예정입니다.",
 
     // 주차 안내 사진
     parkingPhotos: [
@@ -2657,9 +2882,19 @@ CONFIG.notices.forEach(notice => {
         );
     }
 
-    li.appendChild(
-        createElement("span", notice.title)
-    );
+    const noticeLink = createElement("a", notice.title);
+
+if (notice.title.includes("셔틀버스")) {
+    noticeLink.href = "#visit";
+} else {
+    noticeLink.href = "#apply";
+}
+
+noticeLink.style.color = "inherit";
+noticeLink.style.fontWeight = "600";
+noticeLink.style.lineHeight = "1.7";
+
+li.appendChild(noticeLink);
 
     $("notice-list").appendChild(li);
 
