@@ -1712,6 +1712,44 @@ footer{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap
         font-size: 17px;
     }
 }
+/* 보고회 모이는 장소 강조 */
+.event-note .meeting-place {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: #fff4cd;
+    border-radius: 12px;
+    padding: 15px 18px;
+    margin: 12px 0;
+}
+
+.meeting-place .meeting-label {
+    font-size: 16px;
+    font-weight: 600;
+    color: #344b63;
+    margin-bottom: 4px;
+}
+
+.meeting-place .meeting-name {
+    font-size: 25px;
+    font-weight: 800;
+    color: #174e9c;
+    line-height: 1.4;
+    word-break: keep-all;
+}
+
+.meeting-place svg {
+    width: 28px;
+    height: 28px;
+    flex-shrink: 0;
+    color: #174e9c;
+}
+
+@media (max-width: 768px) {
+    .meeting-place .meeting-name {
+        font-size: 21px;
+    }
+}
 </style>
 </head>
 <body>
@@ -1762,10 +1800,12 @@ footer{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap
 <span id="event-date"></span>
 </div>
 <div class="countdown"><i data-lucide="clock"></i><span id="countdown-text">보고회에서 만나요!</span></div>
-<div class="event-row">
-<i data-lucide="map-pin"></i>
-<strong>장소</strong>
-<span>장평초등학교</span>
+<div class="event-row meeting-place">
+    <i data-lucide="map-pin"></i>
+    <div>
+        <div class="meeting-label">모이는 장소</div>
+        <div class="meeting-name">장평초등학교 체육관</div>
+    </div>
 </div>
 <div class="event-row">
 <i data-lucide="users"></i>
@@ -2106,7 +2146,7 @@ footer{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap
         </p>
 <aside class="parking-alert">
 <h2>방문 전 주차 안내를 반드시 확인해 주세요!</h2>
-<p>보고회 당일 운동장에서 공개수업이 이루어지는 관계로 <strong style="color: #b42318;">운동장 주차가 불가합니다.</strong></p>
+<p>보고회 당일 운동장에서 공개수업이 이루어지는 관계로 <span style="display: inline; color: #174e9c; font-weight: 800; font-size: inherit;">운동장 주차가 불가합니다.</span></p>
 <strong>12시 30분 이후 도착하거나 교내 주차장이 만차인 경우 반드시 지정 주차장 및 셔틀버스를 이용해 주세요.</strong>
 <div class="parking-highlight-grid">
 
@@ -2423,7 +2463,7 @@ CONFIG.lessons.forEach(lesson => {
     );
 
     card.appendChild(
-        createElement("p", "수업 주제: " + lesson.topic)
+        createElement("p", "기본 움직임: " + lesson.topic)
     );
 
     card.appendChild(
